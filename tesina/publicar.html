@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compartir experiencia - Mi Pasantía</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1> Mi Pasantía</h1>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="publicar.html">Publicar experiencia</a>
+        <a href="galeria.html">Galería</a>
+        <a href="foro.html">Foro</a>
+        <a href="test.html">Test vocacional</a>
+        <a href="login.html">Iniciar sesión</a>
+    </nav>
+
+</header>
+
+<main>
+
+<div class="formulario">
+
+    <h2>Compartir mi experiencia</h2>
+
+    <form action="#" method="POST">
+
+        <label for="titulo">
+            Título de la experiencia:
+        </label>
+
+        <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            placeholder="Ej: Mi primera experiencia laboral"
+            required
+        >
+
+        <label for="empresa">
+            Empresa o institución:
+        </label>
+
+        <input
+            type="text"
+            id="empresa"
+            name="empresa"
+            placeholder="Nombre de la empresa"
+            required
+        >
+
+        <label for="fecha">
+            Fecha de la pasantía:
+        </label>
+
+        <input
+            type="date"
+            id="fecha"
+            name="fecha"
+            required
+        >
+
+        <label for="categoria">
+            Categoría de la pasantía:
+        </label>
+
+        <select
+            id="categoria"
+            name="categoria"
+            required
+        >
+            <option value="">Seleccioná una categoría</option>
+            <option>Tecnología</option>
+            <option>Administración</option>
+            <option>Salud</option>
+            <option>Educación</option>
+            <option>Industria</option>
+            <option>Comercio</option>
+            <option>Turismo</option>
+            <option>Otra</option>
+        </select>
+
+        <label for="contenido">
+            Contá tu experiencia:
+        </label>
+
+        <textarea
+            id="contenido"
+            name="contenido"
+            rows="10"
+            placeholder="¿Qué actividades realizaste? ¿Qué aprendiste?"
+            required
+        ></textarea>
+
+        <button type="submit">
+            Publicar experiencia
+        </button>
+
+    </form>
+
+</div>
+
+</main>
+
+<footer>
+
+    <p>© 2026 - Mi Pasantía</p>
+
+</footer>
+
+</body>
+</html>

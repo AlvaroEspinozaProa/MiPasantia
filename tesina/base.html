@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pasantía</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>📘 Mi Pasantía</h1>
+
+    <button class="menu-btn" onclick="mostrarMenu()">
+        ☰
+    </button>
+
+    <nav id="menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="publicar.html">
+            Publicar experiencia
+        </a>
+
+        <a href="galeria.html">
+            Galería
+        </a>
+
+        <a href="contacto.html">
+            Contacto
+        </a>
+
+        <a href="login.html">
+            Iniciar sesión
+        </a>
+
+        <a href="registro.html">
+            Registrarse
+        </a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <h2>Experiencias que dejan huella</h2>
+
+    <p>
+        Un espacio para que los estudiantes compartan
+        sus experiencias durante las pasantías escolares.
+    </p>
+
+    <a class="boton" href="publicar.html">
+        Compartí tu experiencia
+    </a>
+
+</section>
+
+<main>
+
+    <h2>Últimas experiencias</h2>
+
+    <section class="experiencias">
+
+        <article class="tarjeta">
+
+            <h3>Mi primer día en la empresa</h3>
+
+            <p><strong>Empresa:</strong> Tech Solutions</p>
+
+            <p><strong>Categoría:</strong> Tecnología</p>
+
+            <p><strong>Publicado por:</strong> Juan Pérez</p>
+
+            <p>
+                El primer día conocimos a los empleados, recorrimos las
+                instalaciones y aprendimos cómo se organiza el trabajo...
+            </p>
+
+            <a href="experiencia.html">
+                Leer experiencia completa
+            </a>
+
+        </article>
+
+        <article class="tarjeta">
+
+            <h3>Aprendiendo nuevas herramientas</h3>
+
+            <p><strong>Empresa:</strong> SoftDev</p>
+
+            <p><strong>Categoría:</strong> Informática</p>
+
+            <p><strong>Publicado por:</strong> María Gómez</p>
+
+            <p>
+                Durante la pasantía utilizamos herramientas que nunca
+                habíamos visto en la escuela y trabajamos en proyectos reales...
+            </p>
+
+            <a href="experiencia.html">
+                Leer experiencia completa
+            </a>
+
+        </article>
+
+        <article class="tarjeta">
+
+            <h3>Trabajo en equipo</h3>
+
+            <p><strong>Empresa:</strong> InnovaTech</p>
+
+            <p><strong>Categoría:</strong> Administración</p>
+
+            <p><strong>Publicado por:</strong> Lucas Fernández</p>
+
+            <p>
+                Aprendimos la importancia de comunicarnos correctamente
+                y colaborar con distintos sectores de la empresa...
+            </p>
+
+            <a href="experiencia.html">
+                Leer experiencia completa
+            </a>
+
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>© 2026 - Mi Pasantía</p>
+
+</footer>
+
+<script>
+
+function mostrarMenu(){
+
+    let menu = document.getElementById("menu");
+
+    if(menu.style.display === "flex"){
+
+        menu.style.display = "none";
+
+    }else{
+
+        menu.style.display = "flex";
+
+    }
+
+}
+
+</script>
+</body>
+</html>
