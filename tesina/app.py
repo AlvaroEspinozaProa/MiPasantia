@@ -319,3 +319,55 @@ if __name__ == "__main__":
     crear_tablas()
 
     app.run(debug=True)
+    from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+app = Flask(__name__)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = "clave-secreta"
+
+db = SQLAlchemy(app)
+
+
+# =========================
+# MODELO DE PUBLICACIONES
+# =========================
+
+class ForoPost(db.Model):
+    __tablename__ = "foro_posts"
+
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(150), nullable=False)
+    contenido = db.Column(db.Text, nullable=False)
+    autor = db.Column(db.String(100), nullable=False)
+    fecha = db.Column(db.DateTime, default=datetime.utcnow)
+
+    respuestas = db.relationship(
+        "ForoRespuesta",
+        backref="post",
+        lazy=True,
+        cascade="all, delete-orphan"
+    )
+
+
+# =========================
+# MODELO DE RESPUESTAS
+# =========================
+
+class ForoRespuesta(db.Model):
+    __tablename__ = "foro_respuestas"
+
+    id = db.Column(db.Integer, primary_key=True)
+    contenido = db.Column(db.Text, nullable=False)
+    autor = db.Column(db.String(100), nullable=False)
+    fecha = db.Column(db.DateTime, default=datetime.utcnow)
+
+    post_id = db.Column(
+        db.Integer,
+        db.ForeignKey("foro_posts.id"),
+        nullable=False
+    )
+

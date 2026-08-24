@@ -1,119 +1,632 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compartir experiencia - Mi Pasantía</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compartir experiencia | FutureHub</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/7d5d0e9d5a.js" crossorigin="anonymous"></script>
+
 </head>
+
 
 <body>
 
+
+<!-- NAVBAR -->
+
 <header>
 
-    <h1> Mi Pasantía</h1>
+<div class="navbar">
 
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="publicar.html">Publicar experiencia</a>
-        <a href="galeria.html">Galería</a>
-        <a href="foro.html">Foro</a>
-        <a href="test.html">Test vocacional</a>
-        <a href="login.html">Iniciar sesión</a>
-    </nav>
 
-</header>
+<div class="logo">
 
-<main>
-
-<div class="formulario">
-
-    <h2>Compartir mi experiencia</h2>
-
-    <form action="#" method="POST">
-
-        <label for="titulo">
-            Título de la experiencia:
-        </label>
-
-        <input
-            type="text"
-            id="titulo"
-            name="titulo"
-            placeholder="Ej: Mi primera experiencia laboral"
-            required
-        >
-
-        <label for="empresa">
-            Empresa o institución:
-        </label>
-
-        <input
-            type="text"
-            id="empresa"
-            name="empresa"
-            placeholder="Nombre de la empresa"
-            required
-        >
-
-        <label for="fecha">
-            Fecha de la pasantía:
-        </label>
-
-        <input
-            type="date"
-            id="fecha"
-            name="fecha"
-            required
-        >
-
-        <label for="categoria">
-            Categoría de la pasantía:
-        </label>
-
-        <select
-            id="categoria"
-            name="categoria"
-            required
-        >
-            <option value="">Seleccioná una categoría</option>
-            <option>Tecnología</option>
-            <option>Administración</option>
-            <option>Salud</option>
-            <option>Educación</option>
-            <option>Industria</option>
-            <option>Comercio</option>
-            <option>Turismo</option>
-            <option>Otra</option>
-        </select>
-
-        <label for="contenido">
-            Contá tu experiencia:
-        </label>
-
-        <textarea
-            id="contenido"
-            name="contenido"
-            rows="10"
-            placeholder="¿Qué actividades realizaste? ¿Qué aprendiste?"
-            required
-        ></textarea>
-
-        <button type="submit">
-            Publicar experiencia
-        </button>
-
-    </form>
+<h2>🚀 FutureHub</h2>
 
 </div>
 
-</main>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">
+Inicio
+</a>
+</li>
+
+<li>
+<a href="explorar.html">
+Explorar
+</a>
+</li>
+
+<li>
+<a href="empresas.html">
+Empresas
+</a>
+</li>
+
+<li>
+<a href="foro.html">
+Foro
+</a>
+</li>
+
+<li>
+<a href="test.html">
+Test
+</a>
+</li>
+
+<li>
+<a href="contacto.html">
+Contacto
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<div class="acciones">
+
+<a href="login.html" class="login">
+
+<i class="fa-solid fa-user"></i>
+
+Ingresar
+
+</a>
+
+</div>
+
+
+</div>
+
+</header>
+
+
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+<div class="hero-info">
+
+
+<span class="etiqueta">
+
+✨ Compartí tu experiencia
+
+</span>
+
+
+<h1>
+
+Tu historia puede inspirar a otros estudiantes.
+
+</h1>
+
+
+<p>
+
+Contá cómo fue tu pasantía, qué aprendiste
+y ayudá a otros jóvenes a prepararse para
+el mundo profesional.
+
+</p>
+
+
+</div>
+
+
+<div class="hero-imagen">
+
+
+<div class="mockup-explorar">
+
+🚀
+
+<br>
+
+Mi experiencia
+
+<br>
+
+FutureHub
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FORMULARIO -->
+
+
+<section class="contacto">
+
+
+<div class="formulario">
+
+
+<h2>
+
+Publicar experiencia
+
+</h2>
+
+
+
+<form id="formExperiencia"></form>
+
+
+<label>
+
+Nombre del estudiante
+
+</label>
+
+
+<input 
+type="text"
+placeholder="Ej: Sofía González">
+
+
+
+
+
+<label>
+
+Empresa donde realizaste la pasantía
+
+</label>
+
+
+<input 
+type="text"
+placeholder="Ej: Google, Arcor, Globant...">
+
+
+
+
+
+<label>
+
+Área profesional
+
+</label>
+
+
+<select>
+
+
+<option>
+Tecnología
+</option>
+
+
+<option>
+Diseño
+</option>
+
+
+<option>
+Marketing
+</option>
+
+
+<option>
+Administración
+</option>
+
+
+<option>
+Ingeniería
+</option>
+
+
+<option>
+Ciencias
+</option>
+
+
+</select>
+
+
+
+
+
+
+<label>
+
+Título de tu experiencia
+
+</label>
+
+
+<input 
+type="text"
+placeholder="Ej: Mi primera experiencia desarrollando una app">
+
+
+
+
+
+
+<label>
+
+Contá tu experiencia
+
+</label>
+
+
+<textarea 
+rows="7"
+placeholder="¿Qué actividades realizaste? ¿Qué aprendiste? ¿Qué consejo le darías a otros estudiantes?">
+
+</textarea>
+
+
+
+
+
+
+<label>
+
+Imagen de la experiencia
+
+</label>
+
+
+<input 
+type="file">
+
+
+
+
+
+
+<button>
+
+Publicar experiencia 🚀
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="datos-contacto">
+
+
+<h2>
+
+¿Por qué compartir?
+
+</h2>
+
+
+
+<div>
+
+🌎
+
+<strong>
+
+Ayudás a otros
+
+</strong>
+
+
+<p>
+
+Tu experiencia puede orientar a estudiantes
+que buscan su primera oportunidad.
+
+</p>
+
+</div>
+
+
+
+
+<div>
+
+💡
+
+<strong>
+
+Mostrás tus aprendizajes
+
+</strong>
+
+
+<p>
+
+Compartí habilidades y conocimientos adquiridos.
+
+</p>
+
+</div>
+
+
+
+
+
+<div>
+
+🚀
+
+<strong>
+
+Construís tu perfil
+
+</strong>
+
+
+<p>
+
+Tus experiencias forman parte de tu camino profesional.
+
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- CTA -->
+
+
+<section class="cta">
+
+
+<h2>
+
+Cada experiencia cuenta
+
+</h2>
+
+
+<p>
+
+Formá parte de la comunidad FutureHub.
+
+</p>
+
+
+<a href="explorar.html">
+
+Ver experiencias
+
+</a>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FOOTER -->
+
 
 <footer>
 
-    <p>© 2026 - Mi Pasantía</p>
+
+<div class="footer-contenedor">
+
+
+<div>
+
+<h2>
+
+🚀 FutureHub
+
+</h2>
+
+
+<p>
+
+Conectando estudiantes con oportunidades reales.
+
+</p>
+
+
+</div>
+
+
+
+<div>
+
+<h3>
+
+Navegación
+
+</h3>
+
+<ul>
+
+<li>
+<a href="index.html">
+Inicio
+</a>
+</li>
+
+<li>
+<a href="explorar.html">
+Explorar
+</a>
+</li>
+
+<li>
+<a href="foro.html">
+Foro
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h3>
+
+Contacto
+
+</h3>
+
+<p>
+📍 Córdoba, Argentina
+</p>
+
+<p>
+📧 contacto@futurehub.com
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>
+
+Seguinos
+
+</h3>
+
+<div class="redes">
+
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+<p class="copyright">
+
+© 2026 FutureHub | Proyecto PROA Experimental Despeñaderos
+
+</p>
+
 
 </footer>
+<script>
+
+const formulario = document.getElementById("formExperiencia");
+
+
+formulario.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+
+    let experiencia = {
+
+        nombre: document.querySelector('input[placeholder="Ej: Sofía González"]').value,
+
+        empresa: document.querySelector('input[placeholder="Ej: Google, Arcor, Globant..."]').value,
+
+        area: document.querySelector("select").value,
+
+        titulo: document.querySelector('input[placeholder="Ej: Mi primera experiencia desarrollando una app"]').value,
+
+        descripcion: document.querySelector("textarea").value
+
+    };
+
+
+    let experiencias = JSON.parse(localStorage.getItem("experiencias")) || [];
+
+
+    experiencias.push(experiencia);
+
+
+    localStorage.setItem("experiencias", JSON.stringify(experiencias));
+
+
+    alert("¡Tu experiencia fue publicada correctamente! 🚀");
+
+
+    formulario.reset();
+
+
+    window.location.href="explorar.html";
+
+
+});
+
+
+</script>
 
 </body>
+
 </html>
