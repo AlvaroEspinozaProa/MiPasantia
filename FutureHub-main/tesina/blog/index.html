@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+{% block contenido %}
+
+<section class="hero">
+
+    <h2>Experiencias que dejan huella</h2>
+
+    <p>
+        Un espacio para que los estudiantes compartan
+        sus experiencias en las pasantías estudiantiles.
+    </p>
+
+    {% if not session.get("usuario_id") %}
+
+        <a class="boton" href="/registro">
+            Compartí tu experiencia
+        </a>
+
+    {% endif %}
+
+</section>
+
+
+<h2>Últimas experiencias</h2>
+
+
+{% if experiencias %}
+
+    <section class="experiencias">
+
+        {% for experiencia in experiencias %}
+
+            <article class="tarjeta">
+
+                <h3>
+                    {{ experiencia["titulo"] }}
+                </h3>
+
+                <p>
+                    <strong>Empresa:</strong>
+                    {{ experiencia["empresa"] }}
+                </p>
+<p>
+    <strong>Categoría:</strong>
+
+    {{ experiencia["categoria"] }}
+</p>
+                <p>
+                    <strong>Publicado por:</strong>
+                    {{ experiencia["nombre"] }}
+                </p>
+
+                <p>
+                    {{ experiencia["contenido"][:200] }}...
+                </p>
+
+                <a href="/experiencia/{{ experiencia['id'] }}">
+                    Leer experiencia completa
+                </a>
+
+            </article>
+
+        {% endfor %}
+
+    </section>
+
+{% else %}
+
+    <p>
+        Todavía no hay experiencias publicadas.
+    </p>
+
+{% endif %}
+
+{% endblock %}
+</body>
+</html>
