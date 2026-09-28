@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ experiencia["titulo"] }} · MiPasantia{% endblock %}
+{% block content %}
+<article class="story">
+    <a class="back-link" href="{{ url_for('explorar') }}">← Volver a explorar</a>
+    {% if experiencia["imagen"] %}
+        <img class="story-image" src="{{ url_for('static', filename=experiencia['imagen']) }}" alt="Imagen de la experiencia: {{ experiencia['titulo'] }}">
+    {% endif %}
+    <span class="tag">{{ experiencia["categoria"] or "Sin categoría" }}</span>
+    <h1>{{ experiencia["titulo"] }}</h1>
+    <p class="meta">{{ experiencia["empresa"] }} · Compartido por {{ experiencia["autor"] }} · {{ experiencia["fecha"] }}</p>
+    <p class="story-text">{{ experiencia["contenido"] }}</p>
+</article>
+{% endblock %}

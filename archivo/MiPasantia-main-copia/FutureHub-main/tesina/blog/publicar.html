@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+{% block contenido %}
+
+<div class="formulario">
+
+    <h2>Compartir mi experiencia</h2>
+
+    <form method="POST">
+
+        <label>
+            Título de la experiencia:
+        </label>
+
+        <input
+            type="text"
+            name="titulo"
+            placeholder="Ej: Mi primera experiencia laboral"
+            required
+        >
+
+        <label>
+            Empresa o institución:
+        </label>
+
+        <input
+            type="text"
+            name="empresa"
+            required
+        >
+
+        <label>
+            Fecha de la pasantía:
+        </label>
+
+        <input
+            type="date"
+            name="fecha"
+            required
+        >
+
+        <label>
+            Contá tu experiencia:
+        </label>
+
+        <textarea
+            name="contenido"
+            rows="10"
+            placeholder="¿Qué actividades realizaste? ¿Qué aprendiste?"
+            required
+        ></textarea>
+
+        <button type="submit">
+            Publicar experiencia
+            
+            
+<label>
+    Categoría de la pasantía:
+</label>
+
+<select name="categoria_id" required>
+
+    <option value="">
+        Seleccioná una categoría
+    </option>
+
+    {% for categoria in categorias %}
+
+        <option value="{{ categoria['id'] }}">
+
+            {{ categoria['nombre'] }}
+
+        </option>
+
+    {% endfor %}
+
+</select>
+        </button>
+
+    </form>
+
+</div>
+
+
+{% endblock %}
+</body>
+</html>

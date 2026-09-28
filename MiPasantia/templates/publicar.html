@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Publicar · MiPasantia{% endblock %}
+{% block content %}
+<section class="form-layout">
+    <div class="page-intro">
+        <p class="eyebrow">Nueva experiencia</p>
+        <h1>Contá qué aprendiste.</h1>
+        <p>Los campos con asterisco son obligatorios. La imagen es opcional.</p>
+    </div>
+
+    <form class="form-card" method="post" enctype="multipart/form-data">
+        <label>Título *<input type="text" name="titulo" maxlength="100" required></label>
+        <label>Empresa u organización *<input type="text" name="empresa" maxlength="100" required></label>
+        <label>
+            Área *
+            <select name="categoria_id" required>
+                <option value="">Seleccioná una categoría</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria['id'] }}">{{ categoria["nombre"] }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Fecha de la pasantía *<input type="date" name="fecha" required></label>
+        <label>Relato *<textarea name="contenido" rows="9" minlength="40" maxlength="3000" required placeholder="¿Qué tareas hiciste? ¿Qué aprendiste?"></textarea></label>
+        <label>Foto opcional<input type="file" name="imagen" accept=".png,.jpg,.jpeg,.webp"><small>PNG, JPG, JPEG o WebP; hasta 2 MB.</small></label>
+        <button class="button" type="submit">Publicar experiencia</button>
+    </form>
+</section>
+{% endblock %}

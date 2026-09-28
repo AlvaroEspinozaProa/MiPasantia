@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Test de Orientación Vocacional</title>
+
+    <link rel="stylesheet" href="diseño.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CARTEL INICIAL
+    ========================== -->
+
+    <div id="avisoInicial">
+
+        <div class="aviso-card">
+
+            <div class="icono-aviso">
+                ⚠️
+            </div>
+
+            <h2>Antes de comenzar</h2>
+
+            <p>
+                Este test es solo un <strong>simulacro</strong> y tiene fines
+                orientativos.
+            </p>
+
+            <p class="texto-secundario">
+                Los resultados obtenidos no determinan tu futuro ni reemplazan
+                la orientación de un profesional.
+            </p>
+
+            <button class="continuar" onclick="comenzarTest()">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TEST
+    ========================== -->
+
+    <div class="contenedor" id="test">
+
+        <header>
+
+            <h1>Test de Orientación Vocacional</h1>
+
+            <p>
+                Respondé las siguientes preguntas con
+                <b>Sí</b> o <b>No</b>.
+                Al finalizar obtendrás el área del conocimiento que mejor se
+                adapta a tus intereses.
+            </p>
+
+            <div class="progreso">
+
+                <div id="barra"></div>
+
+            </div>
+
+            <p id="contador">
+                Pregunta 1 de 30
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             PREGUNTAS
+        ========================== -->
+
+        <main id="quiz">
+
+            <div class="tarjeta">
+
+                <h2 id="pregunta">
+                    Aquí aparecerá la pregunta...
+                </h2>
+
+                <div class="botones">
+
+                    <button class="si" onclick="responder(true)">
+                        ✔ Sí
+                    </button>
+
+                    <button class="no" onclick="responder(false)">
+                        ✖ No
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- =========================
+             RESULTADO
+        ========================== -->
+
+        <section id="resultado">
+
+            <h2>Resultado del Test</h2>
+
+            <p>
+                Según tus respuestas, estas son las áreas con mayor afinidad.
+            </p>
+
+
+            <div class="resultado-card">
+
+                <h3>🥇 Primera área recomendada</h3>
+
+                <h4 id="primerLugar"></h4>
+
+                <div class="barraResultado">
+                    <div id="barra1"></div>
+                </div>
+
+                <p id="descripcion1"></p>
+
+            </div>
+
+
+            <div class="resultado-card">
+
+                <h3>🥈 Segunda área recomendada</h3>
+
+                <h4 id="segundoLugar"></h4>
+
+                <div class="barraResultado">
+                    <div id="barra2"></div>
+                </div>
+
+                <p id="descripcion2"></p>
+
+            </div>
+
+
+            <div class="resultado-card">
+
+                <h3>🥉 Tercera área recomendada</h3>
+
+                <h4 id="tercerLugar"></h4>
+
+                <div class="barraResultado">
+                    <div id="barra3"></div>
+                </div>
+
+                <p id="descripcion3"></p>
+
+            </div>
+
+
+            <div class="carreras">
+
+                <h3>Carreras relacionadas</h3>
+
+                <ul id="listaCarreras"></ul>
+
+            </div>
+
+
+            <button class="reiniciar" onclick="location.reload()">
+                Realizar nuevamente
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <script src="color.js"></script>
+
+</body>
+
+</html>

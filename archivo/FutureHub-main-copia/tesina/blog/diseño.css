@@ -1,0 +1,681 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =========================
+        GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+
+    background: #A9CEF4;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+}
+
+
+/* =========================
+       AVISO INICIAL
+========================= */
+
+#avisoInicial {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #A9CEF4;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+
+}
+
+
+.aviso-card {
+
+    width: 90%;
+    max-width: 600px;
+
+    background: white;
+
+    padding: 50px 45px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 35px rgba(54, 73, 78, 0.25);
+
+}
+
+
+.icono-aviso {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.aviso-card h2 {
+
+    color: #36494E;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.aviso-card p {
+
+    color: #555;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
+
+}
+
+
+.aviso-card .texto-secundario {
+
+    font-size: 16px;
+
+    color: #777;
+
+}
+
+
+.continuar {
+
+    margin-top: 25px;
+
+    padding: 16px 55px;
+
+    background: #36494E;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.continuar:hover {
+
+    background: #597081;
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================
+          TEST
+========================= */
+
+#test {
+
+    display: none;
+
+}
+
+
+.contenedor {
+
+    width: 95%;
+
+    max-width: 1200px;
+
+    min-height: 85vh;
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 35px rgba(54, 73, 78, 0.25);
+
+}
+
+
+/* =========================
+        ENCABEZADO
+========================= */
+
+header {
+
+    background: #36494E;
+
+    color: white;
+
+    padding: 45px;
+
+    text-align: center;
+
+}
+
+
+header h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+    font-weight: 700;
+
+}
+
+
+header p {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.95;
+
+}
+
+
+/* =========================
+      BARRA PROGRESO
+========================= */
+
+.progreso {
+
+    width: 100%;
+
+    height: 14px;
+
+    background: #597081;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    margin: 30px 0 15px;
+
+}
+
+
+#barra {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #A9CEF4;
+
+    transition: 0.5s;
+
+}
+
+
+#contador {
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+         PREGUNTAS
+========================= */
+
+#quiz {
+
+    padding: 60px;
+
+}
+
+
+.tarjeta {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+#pregunta {
+
+    font-size: 34px;
+
+    color: #1f2937;
+
+    text-align: center;
+
+    line-height: 1.6;
+
+    margin-bottom: 50px;
+
+    min-height: 120px;
+
+}
+
+
+/* =========================
+          BOTONES
+========================= */
+
+.botones {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.botones button {
+
+    color: white;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.botones button:hover {
+
+    transform: translateY(-4px);
+
+}
+
+
+.si {
+
+    background: #16a34a;
+
+}
+
+
+.si:hover {
+
+    background: #15803d;
+
+}
+
+
+.no {
+
+    background: #dc2626;
+
+}
+
+
+.no:hover {
+
+    background: #b91c1c;
+
+}
+
+
+/* =========================
+        RESULTADOS
+========================= */
+
+#resultado {
+
+    display: none;
+
+    padding: 60px;
+
+}
+
+
+#resultado h2 {
+
+    text-align: center;
+
+    color: #0f4c81;
+
+    font-size: 34px;
+
+    margin-bottom: 15px;
+
+}
+
+
+#resultado > p {
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 18px;
+
+    margin-bottom: 40px;
+
+}
+
+
+.resultado-card {
+
+    background: #F8FAFC;
+
+    border-left: 8px solid #597081;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.resultado-card h3 {
+
+    color: #0f4c81;
+
+    margin-bottom: 10px;
+
+}
+
+
+.resultado-card h4 {
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+
+    color: #111827;
+
+}
+
+
+.resultado-card p {
+
+    color: #555;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+       BARRAS RESULTADO
+========================= */
+
+.barraResultado {
+
+    width: 100%;
+
+    height: 18px;
+
+    background: #D9E5EC;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    margin-bottom: 15px;
+
+}
+
+
+#barra1,
+#barra2,
+#barra3 {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #597081;
+
+    border-radius: 30px;
+
+    transition: 0.8s;
+
+}
+
+
+/* =========================
+         CARRERAS
+========================= */
+
+.carreras {
+
+    background: #EEF5F8;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-top: 30px;
+
+}
+
+
+.carreras h3 {
+
+    color: #0f4c81;
+
+    margin-bottom: 20px;
+
+}
+
+
+.carreras ul {
+
+    list-style: none;
+
+}
+
+
+.carreras li {
+
+    background: white;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border-left: 6px solid #597081;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+
+}
+
+
+.carreras li:hover {
+
+    transform: translateX(5px);
+
+}
+
+
+/* =========================
+       BOTÓN REINICIAR
+========================= */
+
+.reiniciar {
+
+    display: block;
+
+    margin: 30px auto 0;
+
+    background: #36494E;
+
+    color: white;
+
+    padding: 16px 35px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.reiniciar:hover {
+
+    background: #000000;
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================
+        RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    body {
+
+        padding: 15px;
+
+    }
+
+
+    .contenedor {
+
+        width: 100%;
+
+        min-height: 100vh;
+
+        border-radius: 12px;
+
+    }
+
+
+    header {
+
+        padding: 30px;
+
+    }
+
+
+    header h1 {
+
+        font-size: 30px;
+
+    }
+
+
+    #quiz,
+    #resultado {
+
+        padding: 30px;
+
+    }
+
+
+    #pregunta {
+
+        font-size: 24px;
+
+        min-height: 90px;
+
+    }
+
+
+    .botones {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .botones button {
+
+        width: 100%;
+
+    }
+
+
+    .aviso-card {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .aviso-card h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    .aviso-card p {
+
+        font-size: 16px;
+
+    }
+
+}

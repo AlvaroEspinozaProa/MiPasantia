@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Página no encontrada · MiPasantia{% endblock %}
+{% block content %}
+<section class="empty-state">
+    <p class="eyebrow">Error 404</p>
+    <h1>No encontramos esa página.</h1>
+    <p>Puede que la experiencia haya sido eliminada o que la dirección no exista.</p>
+    <a class="button" href="{{ url_for('index') }}">Volver al inicio</a>
+</section>
+{% endblock %}
