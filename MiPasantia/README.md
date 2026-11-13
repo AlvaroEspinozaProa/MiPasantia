@@ -4,6 +4,10 @@ Aplicación Flask para compartir experiencias de pasantías estudiantiles.
 
 ## Ejecutar
 
+En Windows, hacer doble clic en `Iniciar MiPasantia.bat`, en la carpeta principal. La primera vez crea un entorno virtual e instala las dependencias; necesita Python e Internet. La página se abre en el navegador y la ventana del lanzador debe permanecer abierta. Cerrarla detiene la aplicación.
+
+Para ejecutarla manualmente:
+
 1. Crear y activar un entorno virtual.
 2. Instalar las dependencias con pip install -r requirements.txt.
 3. Copiar .env.example como .env y definir una clave secreta propia.
