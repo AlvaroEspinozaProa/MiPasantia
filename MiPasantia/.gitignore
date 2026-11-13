@@ -1,6 +1,7 @@
 .env
 .venv/
 __pycache__/
+database.db
 *.py[cod]
 static/uploads/*
 !static/uploads/.gitkeep
