@@ -12,6 +12,8 @@
         <nav aria-label="Navegación principal">
             <a href="{{ url_for('index') }}">Inicio</a>
             <a href="{{ url_for('explorar') }}">Explorar</a>
+            <a href="{{ url_for('foro') }}">Foro</a>
+            <a href="{{ url_for('test_vocacional') }}">Test vocacional</a>
             {% if session.get("usuario_id") %}
                 <a href="{{ url_for('publicar') }}">Publicar</a>
                 <span class="user-name">Hola, {{ session.get("nombre") }}</span>

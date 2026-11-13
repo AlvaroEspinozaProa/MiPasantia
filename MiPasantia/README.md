@@ -23,6 +23,8 @@ Para ejecutarla manualmente:
 
 Las contraseñas se guardan con hash. Las imágenes publicadas se almacenan en static/uploads/ y no se suben al repositorio.
 
+El foro permite a usuarios registrados iniciar conversaciones y responder. El test vocacional funciona en el navegador, no guarda respuestas y ofrece resultados orientativos.
+
 La base SQLite se crea automáticamente al iniciar la aplicación y permanece en esta carpeta. Es una versión de desarrollo: antes de publicarla en Internet necesita una revisión de seguridad y una configuración de producción.
 
 Para conocer la reorganización y las pruebas realizadas, consultar CAMBIOS.md.

@@ -1,6 +1,7 @@
 """Aplicación principal de MiPasantia."""
 
 import os
+import secrets
 import sqlite3
 from pathlib import Path
 from uuid import uuid4
@@ -74,6 +75,25 @@ def crear_tablas():
                 categoria_id INTEGER,
                 FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
                 FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS temas_foro (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                titulo TEXT NOT NULL,
+                contenido TEXT NOT NULL,
+                usuario_id INTEGER NOT NULL,
+                fecha TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS respuestas_foro (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                tema_id INTEGER NOT NULL,
+                contenido TEXT NOT NULL,
+                usuario_id INTEGER NOT NULL,
+                fecha TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (tema_id) REFERENCES temas_foro(id),
+                FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
             );
             """
         )
@@ -149,6 +169,82 @@ def usuario_logueado():
 def index():
     """Muestra las experiencias más recientes."""
     return render_template("index.html", experiencias=obtener_experiencias()[:6])
+
+
+@app.context_processor
+def token_formulario():
+    if "token_foro" not in session:
+        session["token_foro"] = secrets.token_urlsafe(32)
+    return {"token_foro": session["token_foro"]}
+
+
+def validar_foro():
+    if not usuario_logueado():
+        flash("Tenés que iniciar sesión para participar en el foro.", "error")
+        return redirect(url_for("login"))
+    token = session.get("token_foro", "")
+    if not token or not secrets.compare_digest(token.encode(), request.form.get("token", "").encode()):
+        abort(400)
+
+
+@app.route("/foro", methods=["GET", "POST"])
+def foro():
+    if request.method == "POST":
+        error = validar_foro()
+        if error:
+            return error
+        titulo = request.form.get("titulo", "").strip()
+        contenido = request.form.get("contenido", "").strip()
+        if not titulo or len(titulo) > 120 or not contenido or len(contenido) > 3000:
+            flash("Completá un título de hasta 120 caracteres y un mensaje de hasta 3000.", "error")
+        else:
+            with conectar_db() as conexion:
+                cursor = conexion.execute(
+                    "INSERT INTO temas_foro (titulo, contenido, usuario_id) VALUES (?, ?, ?)",
+                    (titulo, contenido, session["usuario_id"]),
+                )
+            return redirect(url_for("tema_foro", tema_id=cursor.lastrowid))
+    with conectar_db() as conexion:
+        temas = conexion.execute("""
+            SELECT temas_foro.*, usuarios.nombre AS autor,
+                   (SELECT COUNT(*) FROM respuestas_foro WHERE tema_id = temas_foro.id) AS respuestas
+            FROM temas_foro JOIN usuarios ON usuarios.id = temas_foro.usuario_id
+            ORDER BY temas_foro.id DESC
+        """).fetchall()
+    return render_template("foro.html", temas=temas)
+
+
+@app.route("/foro/<int:tema_id>", methods=["GET", "POST"])
+def tema_foro(tema_id):
+    with conectar_db() as conexion:
+        tema = conexion.execute("""
+            SELECT temas_foro.*, usuarios.nombre AS autor FROM temas_foro
+            JOIN usuarios ON usuarios.id = temas_foro.usuario_id WHERE temas_foro.id = ?
+        """, (tema_id,)).fetchone()
+        if tema is None:
+            abort(404)
+        if request.method == "POST":
+            error = validar_foro()
+            if error:
+                return error
+            contenido = request.form.get("contenido", "").strip()
+            if not contenido or len(contenido) > 3000:
+                flash("Escribí una respuesta de hasta 3000 caracteres.", "error")
+            else:
+                conexion.execute("INSERT INTO respuestas_foro (tema_id, contenido, usuario_id) VALUES (?, ?, ?)",
+                                 (tema_id, contenido, session["usuario_id"]))
+                return redirect(url_for("tema_foro", tema_id=tema_id))
+        respuestas = conexion.execute("""
+            SELECT respuestas_foro.*, usuarios.nombre AS autor FROM respuestas_foro
+            JOIN usuarios ON usuarios.id = respuestas_foro.usuario_id
+            WHERE tema_id = ? ORDER BY respuestas_foro.id
+        """, (tema_id,)).fetchall()
+    return render_template("tema_foro.html", tema=tema, respuestas=respuestas)
+
+
+@app.get("/test-vocacional")
+def test_vocacional():
+    return render_template("test_vocacional.html")
 
 
 @app.route("/explorar")

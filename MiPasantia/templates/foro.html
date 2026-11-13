@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Foro · MiPasantia{% endblock %}
+{% block content %}
+<section class="page-intro">
+    <p class="eyebrow">Comunidad MiPasantia</p>
+    <h1>Preguntá, compartí y aprendé con otros.</h1>
+    <p>Un espacio para conversar sobre estudios, entrevistas y primeras experiencias laborales.</p>
+    <a class="button" href="#nueva-conversacion">Iniciar una conversación</a>
+</section>
+<div class="forum-layout">
+    <section aria-labelledby="conversaciones">
+        <div class="section-heading"><div><h2 id="conversaciones">Conversaciones</h2><p>Las publicaciones más recientes de la comunidad.</p></div></div>
+        {% for tema in temas %}
+        <article class="card forum-topic">
+            <span class="tag">Conversación</span>
+            <h3><a href="{{ url_for('tema_foro', tema_id=tema['id']) }}">{{ tema['titulo'] }}</a></h3>
+            <p>{{ tema['contenido'][:180] }}{% if tema['contenido']|length > 180 %}…{% endif %}</p>
+            <p class="meta">{{ tema['autor'] }} · {{ tema['fecha'][:10] }} · {{ tema['respuestas'] }} respuesta{% if tema['respuestas'] != 1 %}s{% endif %}</p>
+        </article>
+        {% else %}
+        <div class="card"><h3>Todavía no hay conversaciones.</h3><p>Hacé la primera pregunta o compartí un consejo.</p></div>
+        {% endfor %}
+    </section>
+    <aside id="nueva-conversacion" class="form-card forum-compose">
+        <h2>Iniciar una conversación</h2>
+        <p>¿Tenés una duda o algo que pueda ayudar a otros estudiantes?</p>
+        {% if session.get('usuario_id') %}
+        <form method="post">
+            <input type="hidden" name="token" value="{{ token_foro }}">
+            <label>Título<input name="titulo" maxlength="120" required></label>
+            <label>Mensaje<textarea name="contenido" rows="5" maxlength="3000" required></textarea></label>
+            <button class="button" type="submit">Publicar conversación</button>
+        </form>
+        {% else %}
+        <a class="button" href="{{ url_for('login') }}">Iniciar sesión para participar</a>
+        {% endif %}
+    </aside>
+</div>
+{% endblock %}
