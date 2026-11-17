@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Crear cuenta · MiPasantia{% endblock %}
+{% block content %}
+<section class="auth-card">
+    <p class="eyebrow">Sumate a la comunidad</p>
+    <h1>Crear una cuenta</h1>
+    <form method="post">
+        <label>Nombre<input type="text" name="nombre" autocomplete="name" maxlength="80" required></label>
+        <label>Correo electrónico<input type="email" name="email" autocomplete="email" required></label>
+        <label>Contraseña<input type="password" name="password" autocomplete="new-password" minlength="6" required><small>Usá al menos 6 caracteres.</small></label>
+        <button class="button" type="submit">Crear cuenta</button>
+    </form>
+    <p>¿Ya tenés cuenta? <a href="{{ url_for('login') }}">Iniciá sesión</a>.</p>
+</section>
+{% endblock %}

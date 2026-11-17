@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Inicio · MiPasantia{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">Comunidad de experiencias</p>
+    <h1>Tu pasantía puede orientar a alguien más.</h1>
+    <p>Leé relatos de otros estudiantes y compartí lo que aprendiste en tu propio recorrido.</p>
+    <div class="actions">
+        <a class="button" href="{{ url_for('explorar') }}">Explorar experiencias</a>
+        {% if session.get("usuario_id") %}
+            <a class="button secondary" href="{{ url_for('publicar') }}">Contar mi experiencia</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Últimas experiencias</h2>
+        <p>Historias recientes compartidas por la comunidad.</p>
+    </div>
+    <a href="{{ url_for('explorar') }}">Ver todas</a>
+</section>
+
+{% if experiencias %}
+<section class="card-grid">
+    {% for experiencia in experiencias %}
+    <article class="card">
+        {% if experiencia["imagen"] %}
+            <img class="card-image" src="{{ url_for('static', filename=experiencia['imagen']) }}" alt="Imagen de la experiencia: {{ experiencia['titulo'] }}">
+        {% endif %}
+        <span class="tag">{{ experiencia["categoria"] or "Sin categoría" }}</span>
+        <h3>{{ experiencia["titulo"] }}</h3>
+        <p class="meta">{{ experiencia["empresa"] }} · {{ experiencia["autor"] }}</p>
+        <p>{{ experiencia["contenido"][:150] }}{% if experiencia["contenido"]|length > 150 %}…{% endif %}</p>
+        <a href="{{ url_for('experiencia', experiencia_id=experiencia['id']) }}">Leer experiencia</a>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<section class="empty-state">
+    <h2>Todavía no hay experiencias publicadas.</h2>
+    <p>La primera publicación puede abrir una conversación útil para otros estudiantes.</p>
+</section>
+{% endif %}
+{% endblock %}

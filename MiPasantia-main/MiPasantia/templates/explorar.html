@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Explorar · MiPasantia{% endblock %}
+{% block content %}
+<section class="page-intro">
+    <p class="eyebrow">Explorar</p>
+    <h1>Encontrá experiencias cercanas a tus intereses.</h1>
+    <p>Buscá una empresa, una palabra o filtrá por área.</p>
+</section>
+
+<form class="filters" method="get">
+    <label>
+        Buscar
+        <input type="search" name="q" value="{{ busqueda }}" placeholder="Ej.: diseño, salud, atención">
+    </label>
+    <label>
+        Categoría
+        <select name="categoria">
+            <option value="">Todas las categorías</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria['id'] }}" {% if categoria_id == categoria['id']|string %}selected{% endif %}>{{ categoria["nombre"] }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button class="button" type="submit">Aplicar filtros</button>
+    {% if busqueda or categoria_id %}
+        <a class="clear-link" href="{{ url_for('explorar') }}">Limpiar</a>
+    {% endif %}
+</form>
+
+<p class="result-count">{{ experiencias|length }} resultado{% if experiencias|length != 1 %}s{% endif %}</p>
+{% if experiencias %}
+<section class="card-grid">
+    {% for experiencia in experiencias %}
+    <article class="card">
+        {% if experiencia["imagen"] %}
+            <img class="card-image" src="{{ url_for('static', filename=experiencia['imagen']) }}" alt="Imagen de la experiencia: {{ experiencia['titulo'] }}">
+        {% endif %}
+        <span class="tag">{{ experiencia["categoria"] or "Sin categoría" }}</span>
+        <h2>{{ experiencia["titulo"] }}</h2>
+        <p class="meta">{{ experiencia["empresa"] }} · {{ experiencia["autor"] }} · {{ experiencia["fecha"] }}</p>
+        <p>{{ experiencia["contenido"][:180] }}{% if experiencia["contenido"]|length > 180 %}…{% endif %}</p>
+        <a href="{{ url_for('experiencia', experiencia_id=experiencia['id']) }}">Ver relato completo</a>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<section class="empty-state">
+    <h2>No encontramos experiencias con esos filtros.</h2>
+    <p>Probá con otra palabra o quitá la categoría seleccionada.</p>
+</section>
+{% endif %}
+{% endblock %}

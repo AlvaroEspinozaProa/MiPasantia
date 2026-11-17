@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Test vocacional · MiPasantia{% endblock %}
+{% block content %}
+<section class="page-intro">
+    <p class="eyebrow">Orientación vocacional</p>
+    <h1>Descubrí qué te interesa.</h1>
+    <p>Respondé 30 preguntas sobre tus intereses y explorá áreas de estudio que podrían gustarte.</p>
+    <p class="meta">Es una herramienta orientativa, no una evaluación profesional. Tus respuestas no se guardan.</p>
+</section>
+<section class="quiz-card" id="test-vocacional">
+    <noscript>Activá JavaScript para completar el test.</noscript>
+    <div id="quiz" hidden>
+        <div class="quiz-progress"><span id="contador"></span><span id="porcentaje"></span></div>
+        <progress id="progreso" max="30" value="0" aria-label="Progreso del test"></progress>
+        <h2 id="pregunta" tabindex="-1"></h2>
+        <div class="actions"><button class="button" type="button" id="si">Sí, me interesa</button><button class="button quiz-no" type="button" id="no">No por ahora</button></div>
+    </div>
+    <div id="resultado" hidden aria-live="polite">
+        <p class="eyebrow">Tu resultado</p>
+        <h2>Áreas para explorar</h2>
+        <p id="resumen"></p>
+        <div id="ranking" class="quiz-ranking"></div>
+        <button class="button" type="button" id="reiniciar">Hacer el test de nuevo</button>
+    </div>
+</section>
+<script src="{{ url_for('static', filename='js/test-vocacional.js') }}" defer></script>
+{% endblock %}

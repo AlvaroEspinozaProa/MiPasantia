@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Iniciar sesión · MiPasantia{% endblock %}
+{% block content %}
+<section class="auth-card">
+    <p class="eyebrow">Bienvenido/a</p>
+    <h1>Iniciá sesión</h1>
+    <form method="post">
+        <label>Correo electrónico<input type="email" name="email" autocomplete="email" required></label>
+        <label>Contraseña<input type="password" name="password" autocomplete="current-password" required></label>
+        <button class="button" type="submit">Ingresar</button>
+    </form>
+    <p>¿Todavía no tenés cuenta? <a href="{{ url_for('registro') }}">Registrate</a>.</p>
+</section>
+{% endblock %}
